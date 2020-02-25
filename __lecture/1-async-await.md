@@ -9,12 +9,13 @@
 </blockquote>
 
 ---
+async functions block the reading of the code compared to promise.then which reads everything while waiting
 
 ```js
 const newPauseFunction = (sec) => {
     return new Promise(function(resolve) {
         console.log(`${sec}s pause`);
-        setTimeout(() => resolve('resolve'), sec * 1000);
+        setTimeout(() => resolve(sec * 2), sec * 1000);
     });
 }
 
@@ -23,6 +24,15 @@ newPauseFunction(1)
     .then(() => newPauseFunction(3))
     .then(() => newPauseFunction(3))
     .then(data => console.log(data));
+
+const doIt = async () => {
+    let data = await newPauseFunction(1);
+    data = await newPauseFunction(data);
+    data = await newPauseFunction(data);
+    await newPauseFunction(data);
+    console.log('no more "awaits"')
+}
+doIt()
 ```
 
 _let's convert it to async/await_
@@ -34,16 +44,16 @@ _let's convert it to async/await_
 Convert the following to async/await
 
 ```js
-transformText(string)
-    .then((str) => allCaps(str))
-    .then((str) => trimFirst(str))
-    .then((str) => trimLast(str))
-    .then((str) => replaceWithX(str))
-    .then((str) => {
-        console.log(str);
-        return str;
+transformText = async (str) =>{
+    let str = await (str) => allCaps(str))
+    str = await trimFirst(str))
+    str = await trimLast(str))
+    str = await replaceWithX(str))
+    str = await console.log(str);
     })
     .catch((err) => console.log(err));
+
+
 ```
 
 ---

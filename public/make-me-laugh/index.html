@@ -8,20 +8,20 @@
     </head>
     <body>
         <div class='centered-container'>
-            <form>
+            <form method="POST" action='/jokeSelect'>
                 <label>
                     Gimme a
-                    <select id="type" name="type" class='joke-select'>
+                    <select id="type" name="type" class='joke-select' onchange="this.form.submit()">
                         <option value='undefined'>Select</option>
                         <option value='dad'>dad</option>
                         <option value='geek'>geek</option>
-                        <option value='tronald'>tronald</option>
+                        <option value='POS'>tronald</option>
                     </select>
-                    Joke,
+                    Joke
                 </label>
-                <button type="submit">NOW!!</button>
             </form>
         </div>
+        <div id='joke'></div>
         <script src="scripts.js"></script>
     </body>
 </html>

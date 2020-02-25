@@ -16,6 +16,7 @@ The syntax is very similar to Promises.
 ```js
 fetch('<URL>')
     .then(res => {
+        // always send a status in response to a fetch URL or a GET
         // if response is successful
             // do something.
         // else
@@ -31,7 +32,7 @@ fetch('<URL>')
 ### `POST
 
 ```js
-fetch('<URL>'{
+fetch('<URL>', {
         method: 'POST', // (optional) for `GET`
         mode: '',       // (optional) no-cors, *cors, same-origin
         cache: '',      // (optional) no-cache, reload, force-cache, only-if-cached

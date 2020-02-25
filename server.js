@@ -3,8 +3,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const { getDadJoke, getTronaldDump, getGeekJoke, jokeSelectHandle, jokeUpdate } = require('./handlers')
 
 const PORT = process.env.PORT || 8000;
+
+const currentJokeHandle = (req, res) => {
+    res.send(jokeUpdate())
+}
 
 express()
     .use(function(req, res, next) {
@@ -19,5 +24,9 @@ express()
     .set('view engine', 'ejs')
 
     // endpoints
-
+    .get('/dad', getDadJoke)
+    .get('/geek', getGeekJoke)
+    .get('/POS', getTronaldDump)
+    .post('/jokeSelect', jokeSelectHandle)
+    .get('/currentjoke', currentJokeHandle)
     .listen(PORT, () => console.log(`Listening on port ${PORT}`));
