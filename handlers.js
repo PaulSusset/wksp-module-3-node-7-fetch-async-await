@@ -2,6 +2,10 @@
 const request = require('request-promise');
 let currentJoke = undefined
 
+const jokeUpdate = () =>{
+    return currentJoke
+}
+
 const jokeSelectHandle = (req, res) => {
     const joke = req.body.type
     res.redirect(`/${joke}`)
@@ -52,4 +56,4 @@ const getDadJoke = async (req, res) => {
     res.redirect('/make-me-laugh')
 }
 
-module.exports = { getDadJoke, getTronaldDump, getGeekJoke, jokeSelectHandle, currentJoke }
+module.exports = { getDadJoke, getTronaldDump, getGeekJoke, jokeSelectHandle, jokeUpdate }

@@ -3,12 +3,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const { getDadJoke, getTronaldDump, getGeekJoke, jokeSelectHandle, currentJoke } = require('./handlers')
+const { getDadJoke, getTronaldDump, getGeekJoke, jokeSelectHandle, jokeUpdate } = require('./handlers')
 
 const PORT = process.env.PORT || 8000;
 
 const currentJokeHandle = (req, res) => {
-    res.send(currentJoke)
+    res.send(jokeUpdate())
 }
 
 express()
